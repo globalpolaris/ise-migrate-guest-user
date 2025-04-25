@@ -69,7 +69,10 @@ def generate_guest_user_xml(guest_users):
             guest_user_entry += """
             </customFields>
         """
-
+        else:
+            guest_user_entry += """
+            <customFields>
+            </customFields>"""
         # Add other guest user information to the XML
         guest_user_entry += f"""
             <guestAccessInfo>

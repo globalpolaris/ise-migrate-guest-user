@@ -4,15 +4,13 @@ from requests.auth import HTTPBasicAuth
 import urllib3
 import csv
 import os
-import dicttoxml
-import xml.dom.minidom
 
 urllib3.disable_warnings()
 
 # Configuration
-ISE_HOST = 'https://IP_ISE'  # Replace with your ISE IP or hostname
-USERNAME = 'username'                         # ISE admin username
-PASSWORD = 'password'                  # ISE admin password
+ISE_HOST = 'https://IP:PORT'  # Replace with your ISE IP or hostname
+USERNAME = 'username'                         # ISE API admin username
+PASSWORD = 'password'                  # ISE API admin password
 VERIFY_SSL = False                         # Set to True if using a valid certificate
 PORTAL_ID = "portalid"  # Portal Id if required
 # API Endpoint
@@ -140,7 +138,7 @@ def push_user(ise_dst_ip):
                     json=u
                 )
                 if response.status_code == 201:
-                    print(f"User {u["GuestUser"]["name"]} added!")
+                    print(f'User {u["GuestUser"]["name"]} added!')
                 else:
                     print(response.text)
                     handle_user_error(u, response.json())
@@ -157,7 +155,7 @@ def push_user(ise_dst_ip):
                 )
                 if response.status_code == 201:
                     print(
-                        f"User {USER_DETAILS[i]["GuestUser"]["name"]} added!")
+                        f'User {USER_DETAILS[i]["GuestUser"]["name"]} added!')
                 else:
                     handle_user_error(USER_DETAILS[i], response.json())
 
